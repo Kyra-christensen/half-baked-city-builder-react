@@ -4,7 +4,7 @@ export default function SloganForm({ setSlogansArray, slogansArray }) {
   // React forms are a pain! 
   // Track the sloganInput form state with a useState hook
   const [sloganInput, setSloganInput] = useState('');
-
+  console.log('-----', sloganInput);
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -14,7 +14,7 @@ export default function SloganForm({ setSlogansArray, slogansArray }) {
     // set the sloganInput form state to an empty string to reset the form
     setSloganInput('');
   }
-
+  
   return (
     <section>
       {/* on submit, call the handleSubmit function, defined above */}
@@ -22,7 +22,7 @@ export default function SloganForm({ setSlogansArray, slogansArray }) {
         Add a slogan to the list!
         {/* on change, set the sloganInput in state to be the input value */}
         {/* also, weirdly, set the value of this input to the sloganInput tracked in state to make this a 'controlled' form input */}
-        <input value={sloganInput} onChange={sloganInput}/>
+        <input onChange={({ target }) => setSloganInput(target.value)}/>
         <button>Submit</button>
       </form>
     </section>
